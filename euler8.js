@@ -27,7 +27,7 @@ var i;
 var p = 1;
 var pmax = 0;
 var size = 0;
-var maxlength = 20;
+var maxlength = 5;
 var digitsMax;
 var mults = 0, divs = 0;
 for(i = 0; i < digits.length; ++i) {
