@@ -30,6 +30,7 @@ var P = function (m) {
 	}
 	var lastp = 1;
 	var pxw = 0;
+	var iterations = 0;
 	while (Math.abs(lastp - pxw) > delta) {
 		lastp = pxw;
 		for (i=0; i < xw.length; ++i) {
@@ -43,6 +44,7 @@ var P = function (m) {
 			var df = d(f);
 			var dfmid = 1;
 			while (Math.abs(dfmid) > delta) {
+				++iterations;
 				mid = (min + max) / 2;
 				dfmid = df(mid);
 				if (dfmid > 0) {
@@ -61,6 +63,7 @@ var P = function (m) {
 		}
 		pxw = _P(xw);
 	}
+	// console.log("" + iterations + " iterations");
 	return pxw;
 }
 var S = 0;
