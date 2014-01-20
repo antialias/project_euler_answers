@@ -30,14 +30,22 @@ var ms = "\
 var m = (ms.split("\n").map(function (ml) {return ml.split(" ").map(function (n) {return parseInt (n);});}));
 
 var i,j,s,h,v,dl,dr,tm,max = 0;
-for (i=2; i < m.length-2; ++i) {
-	for (j=2; j < m[i].length-2; ++j) {
+for (i=0; i < m.length; ++i) {
+	for (j=0; j < m[i].length; ++j) {
 		h = v = dl = dr = 1;
 		for (s=-2; s < 2; ++s) {
-			h *= m[i][j+s];
-			v *= m[i+s][j];
-			dl *= m[i+s][j+s];
-			dr *= m[i+s][j-s];
+			var margin_i = j >= 2 && j <= m[i].length - 2;
+			var margin_j = i >= 2 && i <= m.length - 2;
+			if (margin_i) {
+				h *= m[i][j+s];
+			}
+			if (margin_j) {
+				v *= m[i+s][j];
+			}
+			if (margin_i && margin_j) {
+				dl *= m[i+s][j+s];
+				dr *= m[i+s][j-s];
+			}
 		}
 		tm = Math.max(h,v,dl,dr);
 		if (max < tm) {
