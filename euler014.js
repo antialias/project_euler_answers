@@ -15,32 +15,18 @@
 // NOTE: Once the chain starts the terms are allowed to go above one million.
 // 
 console.time("collatz");
-var m = {};
-var cl = {};
-
-
-var mn, mc = 0, op = 0, tc = 0;
-var on, n;
-var c = 0;
+var cl = {}, mn, mc = 0, op = 0, tc = 0, on, n, c = 0;
 for(on = 2; on <= 1000000; ++on) {
 	var n = on;
 	c = 0;
 	while (n !== 1) {
 		++c;
 		++tc;
-		var r;
-		if (undefined !== m[n]) {
-			n = m[n];
+		if (n % 2) {
+			n = 3 * n + 1;
 		} else {
-			if (n % 2) {
-				r = 3 * n + 1;
-			} else {
-				r = n / 2;
-			}
-			m[n] = r;
-			n = r;
+			n = n / 2;
 		}
-		// console.log(n);
 		if (undefined !== cl[n]) {
 			c += cl[n];
 			op += cl[n];
