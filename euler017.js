@@ -39,7 +39,7 @@ var engnum = function (n) {
 		return "" + numbers[pp] + " " + engnum(n - pp);
 	}
 	var remainder = n % pp;
-	return "" + engnum(Math.floor(n / pp)) + " " + numbers[pp] + (remainder > 0 ? " and " + engnum(n % pp) : "");
+	return "" + engnum(Math.floor(n / pp)) + " " + numbers[pp] + (remainder > 0 ? " and " + engnum(remainder) : "");
 }
 var en,n,c = 0;
 for (n=1; n <= 1000; ++n) {
